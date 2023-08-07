@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Categoria(models.Model):
-    Categoria = models.CharField(max_length=50,null=False,blank=False, verbose_name='Categoria')
+    categoria = models.CharField(max_length=50, verbose_name='Categoria')
     essencial = models.BooleanField(default=False)
     valor_planejamento = models.FloatField(default=0, verbose_name='Valor do planejamneto')
     
@@ -21,11 +21,11 @@ class Conta(models.Model):
         ('pj', 'Pessoa Juridica'),
     )
     
-    apelido = models.CharField(max_length=50)
+    apelido = models.CharField(max_length=50, blank=False)
     banco = models.CharField(max_length=2,choices=banco_choices)
     tipo = models.CharField(max_length=2, choices=tipo_choices)
-    valor = models.FloatField()
-    icone = models.ImageField(upload_to='Icone')
+    valor = models.FloatField(verbose_name='Valor do deposito')
+    icone = models.ImageField(upload_to='Icone', verbose_name='Icone do Banco')
     
     def __str__(self):
         return self.apelido
